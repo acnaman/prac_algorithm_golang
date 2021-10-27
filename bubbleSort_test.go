@@ -20,6 +20,16 @@ func TestBubbleSort(t *testing.T) {
 			t.Errorf("got %v want %v given, %v", numbers, expected, numbers)
 		}
 	})
+
+	t.Run("[5,9,3,1,2,8,4,6,7]をバブルソートすると[1,2,3,4,5,6,7,8,9]となる", func(t *testing.T) {
+		numbers := []int{5, 9, 3, 1, 2, 8, 4, 6, 7}
+		expected := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+		actual := BubbleSort(numbers)
+		if !equals(actual, expected) {
+			t.Errorf("got %v want %v given, %v", numbers, expected, numbers)
+		}
+	})
+
 }
 
 /**
