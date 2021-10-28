@@ -7,7 +7,7 @@ func TestBubbleSort(t *testing.T) {
 		numbers := []int{1, 2, 3}
 		expected := []int{1, 2, 3}
 		actual := BubbleSort(numbers)
-		if !equals(actual, expected) {
+		if !Equals(actual, expected) {
 			t.Errorf("got %v want %v given, %v", numbers, expected, numbers)
 		}
 	})
@@ -16,7 +16,7 @@ func TestBubbleSort(t *testing.T) {
 		numbers := []int{2, 1, 3}
 		expected := []int{1, 2, 3}
 		actual := BubbleSort(numbers)
-		if !equals(actual, expected) {
+		if !Equals(actual, expected) {
 			t.Errorf("got %v want %v given, %v", numbers, expected, numbers)
 		}
 	})
@@ -25,25 +25,9 @@ func TestBubbleSort(t *testing.T) {
 		numbers := []int{5, 9, 3, 1, 2, 8, 4, 6, 7}
 		expected := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 		actual := BubbleSort(numbers)
-		if !equals(actual, expected) {
+		if !Equals(actual, expected) {
 			t.Errorf("got %v want %v given, %v", numbers, expected, numbers)
 		}
 	})
 
-}
-
-/**
- * intのスライスの完全一致を判定する
- */
-func equals(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
 }
