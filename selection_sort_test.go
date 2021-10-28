@@ -8,7 +8,7 @@ func TestSelectionSort(t *testing.T) {
 		expected := []int{1, 2, 3}
 		actual := SelectionSort(numbers)
 		if !Equals(actual, expected) {
-			t.Errorf("got %v want %v given, %v", numbers, expected, numbers)
+			t.Errorf("got %v want %v given, %v", actual, expected, numbers)
 		}
 	})
 }

@@ -8,7 +8,7 @@ func TestBubbleSort(t *testing.T) {
 		expected := []int{1, 2, 3}
 		actual := BubbleSort(numbers)
 		if !Equals(actual, expected) {
-			t.Errorf("got %v want %v given, %v", numbers, expected, numbers)
+			t.Errorf("got %v want %v given, %v", actual, expected, numbers)
 		}
 	})
 
@@ -17,7 +17,7 @@ func TestBubbleSort(t *testing.T) {
 		expected := []int{1, 2, 3}
 		actual := BubbleSort(numbers)
 		if !Equals(actual, expected) {
-			t.Errorf("got %v want %v given, %v", numbers, expected, numbers)
+			t.Errorf("got %v want %v given, %v", actual, expected, numbers)
 		}
 	})
 
@@ -26,7 +26,7 @@ func TestBubbleSort(t *testing.T) {
 		expected := []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
 		actual := BubbleSort(numbers)
 		if !Equals(actual, expected) {
-			t.Errorf("got %v want %v given, %v", numbers, expected, numbers)
+			t.Errorf("got %v want %v given, %v", actual, expected, numbers)
 		}
 	})
 
