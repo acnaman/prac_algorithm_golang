@@ -4,6 +4,30 @@ type Heap struct {
 	nodes []int
 }
 
+// 指定された数値をヒープに挿入する。
+func (h *Heap) Insert(v int) {
+	h.nodes = append(h.nodes, v)
+
+	for i := h.lastNodeIndex(); i > 0; {
+
+		parentIndex := parentNodeIndex(i)
+		parent := h.nodes[parentIndex]
+
+		if parent > v {
+			h.nodes[i] = parent
+			h.nodes[parentIndex] = v
+			i = parentIndex
+		} else {
+			break
+		}
+	}
+}
+
+// 末尾ノードのインデックスを取得する。
+func (h *Heap) lastNodeIndex() int {
+	return len(h.nodes) - 1
+}
+
 // 指定されたインデックスのノードの親ノードのインデックスを取得します。
 func parentNodeIndex(i int) int {
 	return (i - 1) / 2
