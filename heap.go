@@ -1,5 +1,9 @@
 package main
 
+import (
+	"errors"
+)
+
 // ヒープ木を表す構造体。
 type Heap struct {
 	nodes []int
@@ -33,6 +37,64 @@ func (h *Heap) Insert(v int) {
 			break
 		}
 	}
+}
+
+// 最小値を取り出します。
+// ノードが１つも無いときはエラーを返却します。
+func (h *Heap) PopMinimum() (int, error) {
+
+	if len(h.nodes) < 1 {
+		return 0, errors.New("Heap does not have any nodes")
+	}
+
+	minimum := h.nodes[0]
+
+	h.nodes[0] = h.nodes[h.lastNodeIndex()]
+	h.nodes = h.nodes[:h.lastNodeIndex()]
+	nodeLength := len(h.nodes)
+
+	for i := 0; i < nodeLength; {
+		parentValue := h.nodes[i]
+
+		// 末端のノードの場合、交換せずに終了する
+		if nodeLength <= leftChildrenNodeIndex(i) {
+			break
+		}
+
+		leftChildrenValue := h.nodes[leftChildrenNodeIndex(i)]
+
+		// 右の子ノードがない場合、左ノードのみとの比較を行い終了する
+		if nodeLength <= rightChildrenNodeIndex(i) {
+			if leftChildrenValue < parentValue {
+				h.nodes[i] = leftChildrenValue
+				h.nodes[leftChildrenNodeIndex(i)] = parentValue
+			}
+
+			break
+		}
+
+		rightChildrenValue := h.nodes[rightChildrenNodeIndex(i)]
+
+		if leftChildrenValue <= rightChildrenValue {
+			// 左の子ノードと比較して子ノードが大きくなるようにする
+			if leftChildrenValue < parentValue {
+				h.nodes[i] = leftChildrenValue
+				h.nodes[leftChildrenNodeIndex(i)] = parentValue
+			}
+
+			i = leftChildrenNodeIndex(i)
+		} else {
+			// 右の子ノードと比較して子ノードが大きくなるようにする
+			if rightChildrenValue < parentValue {
+				h.nodes[i] = rightChildrenValue
+				h.nodes[rightChildrenNodeIndex(i)] = parentValue
+			}
+
+			i = rightChildrenNodeIndex(i)
+		}
+	}
+
+	return minimum, nil
 }
 
 // 末尾ノードのインデックスを取得する。

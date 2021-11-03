@@ -75,7 +75,11 @@ func TestPopMinimum(t *testing.T) {
 		heap := Heap{[]int{1, 3, 2, 4, 8, 7, 6}}
 		expected := 1
 
-		actual := heap.PopMinimum()
+		actual, err := heap.PopMinimum()
+
+		if err != nil {
+			t.Errorf("unexpected error occured! %v want %v given, %v", actual, expected, heap)
+		}
 
 		if actual != expected {
 			t.Errorf("got %v want %v given, %v", actual, expected, heap)
