@@ -4,6 +4,17 @@ type Heap struct {
 	nodes []int
 }
 
+// 指定された整数のスライスからヒープ木を生成する
+func NewHeap(sl []int) *Heap {
+	h := new(Heap)
+
+	for _, v := range sl {
+		h.Insert(v)
+	}
+
+	return h
+}
+
 // 指定された数値をヒープに挿入する。
 func (h *Heap) Insert(v int) {
 	h.nodes = append(h.nodes, v)
