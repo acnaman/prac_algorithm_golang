@@ -66,3 +66,17 @@ func TestHeapInsert(t *testing.T) {
 		}
 	})
 }
+
+// 最小値を取り出すメソッドのテスト。
+func TestPopMinimum(t *testing.T) {
+	t.Run("[1,3,2,4,8,7,6]から最小値を取得すると1となる", func(t *testing.T) {
+		heap := Heap{[]int{1, 3, 2, 4, 8, 7, 6}}
+		expected := 1
+
+		actual := heap.PopMinimum()
+
+		if actual != expected {
+			t.Errorf("got %v want %v given, %v", actual, expected, heap)
+		}
+	})
+}
