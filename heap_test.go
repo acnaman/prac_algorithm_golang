@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// ヒープ木生成のテスト。
 func TestNewHeap(t *testing.T) {
 	t.Run("[1,2,3]からヒープを生成すると[1,3,2]となる", func(t *testing.T) {
 		heap := NewHeap([]int{3, 2, 1})
@@ -17,6 +18,7 @@ func TestNewHeap(t *testing.T) {
 	})
 }
 
+// ヒープへの挿入のテスト。
 func TestHeapInsert(t *testing.T) {
 	t.Run("[1,2,3]に4を挿入すると[1,2,3,4]となる", func(t *testing.T) {
 		heap := Heap{[]int{1, 2, 3}}
