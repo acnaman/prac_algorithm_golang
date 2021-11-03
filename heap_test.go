@@ -85,4 +85,19 @@ func TestPopMinimum(t *testing.T) {
 			t.Errorf("got %v want %v given, %v", actual, expected, heap)
 		}
 	})
+
+	t.Run("[1,3,5,4,8,7,6]から最小値を取り出すと残りは[3,4,5,6,8,7]となる", func(t *testing.T) {
+		heap := Heap{[]int{1, 3, 5, 4, 8, 7, 6}}
+		expected := []int{3, 4, 5, 6, 8, 7}
+		_, err := heap.PopMinimum()
+		actual := heap.nodes
+
+		if err != nil {
+			t.Errorf("unexpected error occured! %v want %v given, %v", actual, expected, heap)
+		}
+
+		if !Equals(actual, expected) {
+			t.Errorf("got %v want %v given, %v", actual, expected, heap)
+		}
+	})
 }
