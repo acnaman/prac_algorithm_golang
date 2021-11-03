@@ -1,5 +1,6 @@
 package main
 
+// ヒープ木を表す構造体。
 type Heap struct {
 	nodes []int
 }
