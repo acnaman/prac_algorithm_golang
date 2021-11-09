@@ -4,6 +4,31 @@ import (
 	"testing"
 )
 
+// 降順ソートメソッドのテスト
+func TestSortDescending(t *testing.T) {
+	t.Run("[1,2,3,4,5]を降順ソートすると[5,4,3,2,1]となる", func(t *testing.T) {
+		given := []int{1, 2, 3, 4, 5}
+		expected := []int{5, 4, 3, 2, 1}
+
+		actual := SortDescending(given)
+
+		if !Equals(actual, expected) {
+			t.Errorf("got %v want %v given, %v", actual, expected, given)
+		}
+	})
+
+	t.Run("[67,1,49,79,15,88,75,2,24,91]を降順ソートすると[91,88,79,75,67,49,24,15,2,1]となる", func(t *testing.T) {
+		given := []int{67, 1, 49, 79, 15, 88, 75, 2, 24, 91}
+		expected := []int{91, 88, 79, 75, 67, 49, 24, 15, 2, 1}
+
+		actual := SortDescending(given)
+
+		if !Equals(actual, expected) {
+			t.Errorf("got %v want %v given, %v", actual, expected, given)
+		}
+	})
+}
+
 // ヒープ木生成のテスト。
 func TestNewHeap(t *testing.T) {
 	t.Run("[1,2,3]からヒープを生成すると[1,3,2]となる", func(t *testing.T) {
