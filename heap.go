@@ -4,6 +4,21 @@ import (
 	"errors"
 )
 
+// 指定された整数のスライスを降順ソートしたスライスとして取得する
+func SortDescending(li []int) []int {
+
+	length := len(li)
+	heap := NewHeap(li)
+
+	res := make([]int, length)
+
+	for i := length - 1; i >= 0; i-- {
+		res[i], _ = heap.PopMinimum()
+	}
+
+	return res
+}
+
 // ヒープ木を表す構造体。
 type Heap struct {
 	nodes []int
